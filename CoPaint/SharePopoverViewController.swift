@@ -15,7 +15,9 @@ class SharePopoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if let text = roomId {
+            roomLabel.text = String(text)
+        }
     }
     
 

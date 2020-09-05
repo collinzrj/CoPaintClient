@@ -194,7 +194,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Share" id="yau-Rc-hin">
                                             <connections>
-                                                <segue destination="QEf-90-nbE" kind="popoverPresentation" popoverAnchorBarButtonItem="yau-Rc-hin" id="N5H-7b-Xly">
+                                                <segue destination="QEf-90-nbE" kind="popoverPresentation" identifier="sharesegue" popoverAnchorBarButtonItem="yau-Rc-hin" id="N5H-7b-Xly">
                                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                 </segue>
                                             </connections>
