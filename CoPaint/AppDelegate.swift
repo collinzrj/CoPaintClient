@@ -14,6 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         CoPaintWebSocket.shared
+        let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("pictures")
+        try! FileManager.default.createDirectory(at: documentsPath, withIntermediateDirectories: true, attributes: .none)
+        print(documentsPath)
         return true
     }
 

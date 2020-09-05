@@ -21,6 +21,7 @@
 		F0F89BC22503B08B00220B0B /* JoinPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BC12503B08B00220B0B /* JoinPopoverViewController.swift */; };
 		F0F89BC42503BA7200220B0B /* SharePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BC32503BA7200220B0B /* SharePopoverViewController.swift */; };
 		F0F89BD32503C75900220B0B /* templates in Resources */ = {isa = PBXBuildFile; fileRef = F0F89BD22503C75900220B0B /* templates */; };
+		F0F89BD52503EBC300220B0B /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BD42503EBC300220B0B /* GalleryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		F0F89BC12503B08B00220B0B /* JoinPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPopoverViewController.swift; sourceTree = "<group>"; };
 		F0F89BC32503BA7200220B0B /* SharePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePopoverViewController.swift; sourceTree = "<group>"; };
 		F0F89BD22503C75900220B0B /* templates */ = {isa = PBXFileReference; lastKnownFileType = folder; name = templates; path = ../../../../Downloads/templates; sourceTree = "<group>"; };
+		F0F89BD42503EBC300220B0B /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				F0F89BA5250341D900220B0B /* ViewController.swift */,
 				F0F89BB72503481B00220B0B /* PaintViewController.swift */,
 				F0F89BB52503442C00220B0B /* TemplatesViewController.swift */,
+				F0F89BD42503EBC300220B0B /* GalleryViewController.swift */,
 				F0F89BC12503B08B00220B0B /* JoinPopoverViewController.swift */,
 				F0F89BC32503BA7200220B0B /* SharePopoverViewController.swift */,
 				F0F89BA7250341D900220B0B /* Main.storyboard */,
@@ -235,6 +238,7 @@
 				F0F89BBC2503532400220B0B /* DrawingView.swift in Sources */,
 				F0F89BC22503B08B00220B0B /* JoinPopoverViewController.swift in Sources */,
 				F0F89BA4250341D900220B0B /* SceneDelegate.swift in Sources */,
+				F0F89BD52503EBC300220B0B /* GalleryViewController.swift in Sources */,
 				F0F89BB82503481B00220B0B /* PaintViewController.swift in Sources */,
 				F0F89BBE2503A04400220B0B /* WebSocket.swift in Sources */,
 			);

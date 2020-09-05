@@ -12,7 +12,7 @@ import CoreGraphics
 class DrawingView: UIView {
     
     var image: CGImage?
-    var selectedColor: UIColor!
+    var selectedColor: UIColor = .green
     var paths = [UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 500, height: 500)),
                  UIBezierPath(ovalIn: CGRect(x: 100, y: 100, width: 50, height: 50)),
                  UIBezierPath(ovalIn: CGRect(x: 300, y: 200, width: 50, height: 50))]

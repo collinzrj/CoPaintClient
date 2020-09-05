@@ -9,6 +9,7 @@
 import UIKit
 
 let templates = ["flower", "frog", "plane", "snowman", "tree", "umbrella"]
+let documentsPath = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("pictures")
 
 class TemplateCell: UICollectionViewCell {
     @IBOutlet weak var imageview: UIImageView!
@@ -23,6 +24,14 @@ class TemplatesViewController: UIViewController {
         super.viewDidLoad()
         templateCollection.delegate = self
         templateCollection.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let alert = UIAlertController(title: "hahah", message: "Hellow World", preferredStyle: .alert)
+        alert.addTextField { (textfield) in
+            textfield.placeholder = "Type your code here"
+        }
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func cancel(_ unwindSegue: UIStoryboardSegue) {}

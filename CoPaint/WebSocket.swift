@@ -31,7 +31,6 @@ internal class CoPaintWebSocket: WebSocketDelegate {
         dump(event) 
         switch event {
         case .text(let str):
-            print(str)
             let json = JSON.init(parseJSON: str)
             if json["room"].exists() {
                 self.roomId = json["room"]["id"].int!
@@ -43,8 +42,6 @@ internal class CoPaintWebSocket: WebSocketDelegate {
                 self.onEnter!()
             } else if json["x"].exists() {
                 self.onTouch!(Touch(x: json["x"].int!, y: json["y"].int!, r: json["r"].int!, g: json["g"].int!,  b: json["b"].int!))
-            } else {
-                print("No exist")
             }
         case .connected(_):
            break

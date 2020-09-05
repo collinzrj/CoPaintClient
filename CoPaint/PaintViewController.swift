@@ -37,6 +37,37 @@ class PaintViewController: UIViewController {
     let checkIcon = UIImageView(image: UIImage(named: "checkIcon"))
     var selectedColor: UIColor = .blue
     
+    @IBAction func saveTapped(_ sender: Any) {
+        if let image = backgroundview.image {
+            let data = UIImage(cgImage: image).pngData()
+            if let index = templateIndex {
+                let name = templates[index]
+                let date = Date()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy/MM/dd/hh/mm/ss"
+                let datestring = dateFormatter.string(from: date)
+                do {
+                    try data?.write(to: documentsPath.appendingPathComponent("\(UUID().uuidString).png"))
+                    let alert = UIAlertController(title: "Picture Saved", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
+                    self.present(alert, animated: true)
+                } catch {
+                    let alert = UIAlertController(title: "Save Picture fail", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
+                    self.present(alert, animated: true)
+                }
+                print("file saved")
+            }
+        }
+        print("finish")
+    }
+    
+    @IBAction func shareTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Room Code is" + String(CoPaintWebSocket.shared.roomId), message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     @objc func buttonTapped(_ sender: ColorButton) {
         print("button tapped")
         checkIcon.frame = sender.frame.insetBy(dx: 5, dy: 5)
@@ -63,12 +94,19 @@ class PaintViewController: UIViewController {
         if let room = self.room {
             CoPaintWebSocket.shared.join(roomId: room, completion: {
                 let index = CoPaintWebSocket.shared.paintingId
+                self.templateIndex = index
                 let name = templates[index]
                 let imageURL = Bundle.main.url(forResource: name, withExtension: "png", subdirectory: "templates")!
                 if let image = UIImage(contentsOfFile: imageURL.path)?.cgImage {
                     self.backgroundview.image = image
                     self.backgroundWidthConstraint.constant = CGFloat(image.width)
                     self.backgroundHeightConstraint.constant = CGFloat(image.height)
+                    self.backgroundview.setNeedsDisplay()
+                    let touches = CoPaintWebSocket.shared.touches
+                    for touch in touches {
+                        print(touch)
+                        self.backgroundview.image = self.backgroundview.manipulatePixel(imageRef: self.backgroundview.image!, point: (touch.x, touch.y), color: UIColor(red: CGFloat(touch.r), green: CGFloat(touch.g), blue: CGFloat(touch.b), alpha: 255))
+                    }
                     self.backgroundview.setNeedsDisplay()
                 }
             }, onTouch: { touch in
@@ -122,11 +160,11 @@ class PaintViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sharesegue" {
+            print("another here")
             let controller = segue.destination as! SharePopoverViewController
             controller.roomId = CoPaintWebSocket.shared.roomId
         }
     }
-    
     
 }
 
