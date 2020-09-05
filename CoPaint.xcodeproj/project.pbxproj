@@ -13,6 +13,9 @@
 		F0F89BA9250341D900220B0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0F89BA7250341D900220B0B /* Main.storyboard */; };
 		F0F89BAB250341DA00220B0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0F89BAA250341DA00220B0B /* Assets.xcassets */; };
 		F0F89BAE250341DA00220B0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0F89BAC250341DA00220B0B /* LaunchScreen.storyboard */; };
+		F0F89BB62503442C00220B0B /* TemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BB52503442C00220B0B /* TemplatesViewController.swift */; };
+		F0F89BB82503481B00220B0B /* PaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BB72503481B00220B0B /* PaintViewController.swift */; };
+		F0F89BBC2503532400220B0B /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BBB2503532400220B0B /* DrawingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		F0F89BAA250341DA00220B0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0F89BAD250341DA00220B0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0F89BAF250341DA00220B0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0F89BB52503442C00220B0B /* TemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesViewController.swift; sourceTree = "<group>"; };
+		F0F89BB72503481B00220B0B /* PaintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintViewController.swift; sourceTree = "<group>"; };
+		F0F89BBB2503532400220B0B /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,9 @@
 				F0F89BA1250341D900220B0B /* AppDelegate.swift */,
 				F0F89BA3250341D900220B0B /* SceneDelegate.swift */,
 				F0F89BA5250341D900220B0B /* ViewController.swift */,
+				F0F89BB72503481B00220B0B /* PaintViewController.swift */,
+				F0F89BB52503442C00220B0B /* TemplatesViewController.swift */,
+				F0F89BBB2503532400220B0B /* DrawingView.swift */,
 				F0F89BA7250341D900220B0B /* Main.storyboard */,
 				F0F89BAA250341DA00220B0B /* Assets.xcassets */,
 				F0F89BAC250341DA00220B0B /* LaunchScreen.storyboard */,
@@ -140,7 +149,10 @@
 			files = (
 				F0F89BA6250341D900220B0B /* ViewController.swift in Sources */,
 				F0F89BA2250341D900220B0B /* AppDelegate.swift in Sources */,
+				F0F89BB62503442C00220B0B /* TemplatesViewController.swift in Sources */,
+				F0F89BBC2503532400220B0B /* DrawingView.swift in Sources */,
 				F0F89BA4250341D900220B0B /* SceneDelegate.swift in Sources */,
+				F0F89BB82503481B00220B0B /* PaintViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
