@@ -33,6 +33,40 @@
             </objects>
             <point key="canvasLocation" x="497.10144927536237" y="433.92857142857139"/>
         </scene>
+        <!--Join Popover View Controller-->
+        <scene sceneID="cwx-co-ceR">
+            <objects>
+                <viewController id="Kuk-nN-S89" customClass="JoinPopoverViewController" customModule="CoPaint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Obf-GA-uoc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eVN-vk-Tkp">
+                                <rect key="frame" x="105" y="32" width="203" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0A-Co-I3a">
+                                <rect key="frame" x="182" y="74" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Join"/>
+                                <connections>
+                                    <action selector="joinTapped:" destination="Kuk-nN-S89" eventType="touchUpInside" id="Zyq-Sd-HeU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="uEb-sU-77e"/>
+                    </view>
+                    <connections>
+                        <outlet property="codeField" destination="eVN-vk-Tkp" id="Gta-gb-mV9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lds-Jx-NsL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-520.28985507246375" y="-597.32142857142856"/>
+        </scene>
         <!--Templates-->
         <scene sceneID="YFg-tZ-y79">
             <objects>
@@ -42,7 +76,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l70-pC-WRU">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="727"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uje-1a-DXs">
@@ -70,6 +104,21 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="HGM-fg-l8E"/>
+                                </items>
+                            </navigationBar>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="11Y-Aj-91u">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="erj-Ox-4MZ">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="cU8-hd-Znq">
+                                            <connections>
+                                                <segue destination="Kuk-nN-S89" kind="popoverPresentation" popoverAnchorBarButtonItem="cU8-hd-Znq" id="05t-ai-VoK">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -106,20 +155,16 @@
         <!--Paint View Controller-->
         <scene sceneID="Gji-MN-PxX">
             <objects>
-                <viewController storyboardIdentifier="PageViewController" id="b7x-4L-5mM" customClass="PaintViewController" customModule="CoPaint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaintViewController" id="b7x-4L-5mM" customClass="PaintViewController" customModule="CoPaint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0mg-R4-J5h" userLabel="BaseView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Mvn-t8-aoD">
-                                <rect key="frame" x="20" y="110" width="374" height="786"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ib7-Ue-76v">
-                                <rect key="frame" x="0.0" y="36" width="414" height="860"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ib7-Ue-76v">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4d-y2-kEC" customClass="DrawingView" customModule="CoPaint" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C4d-y2-kEC" customClass="DrawingView" customModule="CoPaint" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="47" width="500" height="453"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="500" id="PHi-oV-5XX"/>
@@ -138,26 +183,35 @@
                                     <outlet property="delegate" destination="b7x-4L-5mM" id="qjI-ot-whN"/>
                                 </connections>
                             </scrollView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bII-kz-uis">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="36"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="110" id="q7F-bn-dTM"/>
-                                </constraints>
-                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="so2-dZ-7PJ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="cMQ-MA-VTB">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Q7k-lV-211">
+                                            <connections>
+                                                <segue destination="QQj-rl-xMI" kind="unwind" unwindAction="cancel:" id="bri-UF-rv0"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Share" id="yau-Rc-hin">
+                                            <connections>
+                                                <segue destination="QEf-90-nbE" kind="popoverPresentation" popoverAnchorBarButtonItem="yau-Rc-hin" id="N5H-7b-Xly">
+                                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                </segue>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Ib7-Ue-76v" secondAttribute="trailing" id="2RM-TN-vtS"/>
-                            <constraint firstItem="bII-kz-uis" firstAttribute="trailing" secondItem="0mg-R4-J5h" secondAttribute="trailing" id="5V0-Gr-c1d"/>
-                            <constraint firstItem="Mvn-t8-aoD" firstAttribute="top" secondItem="bII-kz-uis" secondAttribute="bottom" id="5e3-tr-3LI"/>
-                            <constraint firstItem="bII-kz-uis" firstAttribute="leading" secondItem="0mg-R4-J5h" secondAttribute="leading" id="BFc-Os-Wwt"/>
-                            <constraint firstItem="bII-kz-uis" firstAttribute="top" secondItem="0mg-R4-J5h" secondAttribute="top" id="J18-Mp-IRz"/>
-                            <constraint firstItem="Mvn-t8-aoD" firstAttribute="trailing" secondItem="0mg-R4-J5h" secondAttribute="trailingMargin" id="JCY-Al-BNE"/>
-                            <constraint firstItem="Ib7-Ue-76v" firstAttribute="top" secondItem="bII-kz-uis" secondAttribute="bottom" id="T5F-lg-Uq4"/>
+                            <constraint firstItem="Ib7-Ue-76v" firstAttribute="top" secondItem="so2-dZ-7PJ" secondAttribute="bottom" id="5F7-ud-z5I"/>
+                            <constraint firstItem="so2-dZ-7PJ" firstAttribute="top" secondItem="3rc-Ke-lC6" secondAttribute="top" id="9Ic-AS-EcS"/>
+                            <constraint firstItem="Ib7-Ue-76v" firstAttribute="top" secondItem="so2-dZ-7PJ" secondAttribute="bottom" id="OJL-Gp-cPY"/>
+                            <constraint firstItem="so2-dZ-7PJ" firstAttribute="trailing" secondItem="3rc-Ke-lC6" secondAttribute="trailing" id="PHs-ew-gyf"/>
                             <constraint firstAttribute="bottom" secondItem="Ib7-Ue-76v" secondAttribute="bottom" id="Vd8-dj-TTh"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Mvn-t8-aoD" secondAttribute="bottom" id="daS-qx-1ee"/>
-                            <constraint firstItem="Mvn-t8-aoD" firstAttribute="leading" secondItem="0mg-R4-J5h" secondAttribute="leadingMargin" id="fwN-CQ-RLY"/>
+                            <constraint firstItem="so2-dZ-7PJ" firstAttribute="leading" secondItem="3rc-Ke-lC6" secondAttribute="leading" id="fwb-wI-v0Q"/>
                             <constraint firstItem="Ib7-Ue-76v" firstAttribute="leading" secondItem="0mg-R4-J5h" secondAttribute="leading" id="mtz-XD-XMa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3rc-Ke-lC6"/>
@@ -170,8 +224,36 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rrx-Jf-23R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="QQj-rl-xMI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1386.9565217391305" y="-216.29464285714286"/>
+        </scene>
+        <!--Share Popover View Controller-->
+        <scene sceneID="3Ew-pA-Yi9">
+            <objects>
+                <viewController id="QEf-90-nbE" customClass="SharePopoverViewController" customModule="CoPaint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8TF-lA-Chp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oj9-qJ-LrJ">
+                                <rect key="frame" x="142" y="20" width="129" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="YaV-2d-f5V"/>
+                    </view>
+                    <connections>
+                        <outlet property="roomLabel" destination="oj9-qJ-LrJ" id="QlT-6u-iCR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BQq-F6-Ywr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2213.04347826087" y="-195.53571428571428"/>
         </scene>
     </scenes>
 </document>

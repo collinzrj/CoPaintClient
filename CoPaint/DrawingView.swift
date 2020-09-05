@@ -27,15 +27,19 @@ class DrawingView: UIView {
 //                }
 //            }
 //            setNeedsDisplay()
-            self.image = manipulatePixel(imageRef: image, point: point, color: .black)
-            setNeedsDisplay()
+            let pixelWidth = image.width
+            let pixelHeight = image.height
+            let pixel_x = Int(point.x * CGFloat(pixelWidth) / self.bounds.width)
+            let pixel_y = Int(CGFloat(pixelHeight) - point.y * CGFloat(pixelHeight) / self.bounds.height)
+            CoPaintWebSocket.shared.touch(x: pixel_x, y: pixel_y, r: 8, g: 8, b: 9)
+//            self.image = manipulatePixel(imageRef: image, point: (pixel_x, pixel_y), color: .black)
+//            setNeedsDisplay()
         }
     }
     
-    func manipulatePixel(imageRef: CGImage, point: CGPoint, color: UIColor) -> CGImage? {
+    func manipulatePixel(imageRef: CGImage, point: (Int, Int), color: UIColor) -> CGImage? {
         let pixelWidth = imageRef.width
         let pixelHeight = imageRef.height
-        print(point, pixelHeight, pixelWidth, self.frame)
         let bitmapBytesPerRow = pixelWidth * 4
         let bitmapByteCount = bitmapBytesPerRow * pixelHeight
         
@@ -62,12 +66,12 @@ class DrawingView: UIView {
         let frame_width = self.frame.width
         let frame_height = self.frame.height
         // may still exist some problem
-        let pixel_x = Int(point.x * CGFloat(pixelWidth) / self.bounds.width)
-        let pixel_y = Int(CGFloat(pixelHeight) - point.y * CGFloat(pixelHeight) / self.bounds.height)
+//        let pixel_x = Int(point.x * CGFloat(pixelWidth) / self.bounds.width)
+//        let pixel_y = Int(CGFloat(pixelHeight) - point.y * CGFloat(pixelHeight) / self.bounds.height)
     
         var pointsQueue = [(Int, Int)]()
         let t1 = CFAbsoluteTimeGetCurrent()
-        pointsQueue.append((pixel_x, pixel_y))
+        pointsQueue.append((point.0, point.1))
         while pointsQueue.count > 0 {
             let currentPoint = pointsQueue.popLast()!
             let offset = currentPoint.1 * width * 4 + currentPoint.0 * 4

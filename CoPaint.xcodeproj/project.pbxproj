@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CCD7405D085402F1A6F321E /* Pods_CoPaint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABF77371A4CF0DFA734053C8 /* Pods_CoPaint.framework */; };
 		F0F89BA2250341D900220B0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BA1250341D900220B0B /* AppDelegate.swift */; };
 		F0F89BA4250341D900220B0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BA3250341D900220B0B /* SceneDelegate.swift */; };
 		F0F89BA6250341D900220B0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BA5250341D900220B0B /* ViewController.swift */; };
@@ -16,9 +17,15 @@
 		F0F89BB62503442C00220B0B /* TemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BB52503442C00220B0B /* TemplatesViewController.swift */; };
 		F0F89BB82503481B00220B0B /* PaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BB72503481B00220B0B /* PaintViewController.swift */; };
 		F0F89BBC2503532400220B0B /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BBB2503532400220B0B /* DrawingView.swift */; };
+		F0F89BBE2503A04400220B0B /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BBD2503A04400220B0B /* WebSocket.swift */; };
+		F0F89BC22503B08B00220B0B /* JoinPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BC12503B08B00220B0B /* JoinPopoverViewController.swift */; };
+		F0F89BC42503BA7200220B0B /* SharePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BC32503BA7200220B0B /* SharePopoverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C7B998B99F83AA5E1CCD9AB /* Pods-CoPaint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoPaint.debug.xcconfig"; path = "Target Support Files/Pods-CoPaint/Pods-CoPaint.debug.xcconfig"; sourceTree = "<group>"; };
+		ABF77371A4CF0DFA734053C8 /* Pods_CoPaint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoPaint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC00132979D22D13EAD91AB8 /* Pods-CoPaint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoPaint.release.xcconfig"; path = "Target Support Files/Pods-CoPaint/Pods-CoPaint.release.xcconfig"; sourceTree = "<group>"; };
 		F0F89B9E250341D900220B0B /* CoPaint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoPaint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0F89BA1250341D900220B0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0F89BA3250341D900220B0B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +37,9 @@
 		F0F89BB52503442C00220B0B /* TemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesViewController.swift; sourceTree = "<group>"; };
 		F0F89BB72503481B00220B0B /* PaintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintViewController.swift; sourceTree = "<group>"; };
 		F0F89BBB2503532400220B0B /* DrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		F0F89BBD2503A04400220B0B /* WebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+		F0F89BC12503B08B00220B0B /* JoinPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPopoverViewController.swift; sourceTree = "<group>"; };
+		F0F89BC32503BA7200220B0B /* SharePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePopoverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +47,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CCD7405D085402F1A6F321E /* Pods_CoPaint.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05058DE795BEA06FBAC1B2CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ABF77371A4CF0DFA734053C8 /* Pods_CoPaint.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA647C0A2A3C047F8AD74F17 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7C7B998B99F83AA5E1CCD9AB /* Pods-CoPaint.debug.xcconfig */,
+				EC00132979D22D13EAD91AB8 /* Pods-CoPaint.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F0F89B95250341D900220B0B = {
 			isa = PBXGroup;
 			children = (
 				F0F89BA0250341D900220B0B /* CoPaint */,
 				F0F89B9F250341D900220B0B /* Products */,
+				CA647C0A2A3C047F8AD74F17 /* Pods */,
+				05058DE795BEA06FBAC1B2CD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,11 +97,14 @@
 				F0F89BA5250341D900220B0B /* ViewController.swift */,
 				F0F89BB72503481B00220B0B /* PaintViewController.swift */,
 				F0F89BB52503442C00220B0B /* TemplatesViewController.swift */,
+				F0F89BC12503B08B00220B0B /* JoinPopoverViewController.swift */,
+				F0F89BC32503BA7200220B0B /* SharePopoverViewController.swift */,
 				F0F89BBB2503532400220B0B /* DrawingView.swift */,
 				F0F89BA7250341D900220B0B /* Main.storyboard */,
 				F0F89BAA250341DA00220B0B /* Assets.xcassets */,
 				F0F89BAC250341DA00220B0B /* LaunchScreen.storyboard */,
 				F0F89BAF250341DA00220B0B /* Info.plist */,
+				F0F89BBD2503A04400220B0B /* WebSocket.swift */,
 			);
 			path = CoPaint;
 			sourceTree = "<group>";
@@ -83,9 +116,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0F89BB2250341DA00220B0B /* Build configuration list for PBXNativeTarget "CoPaint" */;
 			buildPhases = (
+				008FE44ACFF148C1F8398EE2 /* [CP] Check Pods Manifest.lock */,
 				F0F89B9A250341D900220B0B /* Sources */,
 				F0F89B9B250341D900220B0B /* Frameworks */,
 				F0F89B9C250341D900220B0B /* Resources */,
+				5E1A846A003601D31B3679EA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -142,17 +177,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		008FE44ACFF148C1F8398EE2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CoPaint-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E1A846A003601D31B3679EA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoPaint/Pods-CoPaint-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CoPaint/Pods-CoPaint-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CoPaint/Pods-CoPaint-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F0F89B9A250341D900220B0B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0F89BC42503BA7200220B0B /* SharePopoverViewController.swift in Sources */,
 				F0F89BA6250341D900220B0B /* ViewController.swift in Sources */,
 				F0F89BA2250341D900220B0B /* AppDelegate.swift in Sources */,
 				F0F89BB62503442C00220B0B /* TemplatesViewController.swift in Sources */,
 				F0F89BBC2503532400220B0B /* DrawingView.swift in Sources */,
+				F0F89BC22503B08B00220B0B /* JoinPopoverViewController.swift in Sources */,
 				F0F89BA4250341D900220B0B /* SceneDelegate.swift in Sources */,
 				F0F89BB82503481B00220B0B /* PaintViewController.swift in Sources */,
+				F0F89BBE2503A04400220B0B /* WebSocket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +374,7 @@
 		};
 		F0F89BB3250341DA00220B0B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C7B998B99F83AA5E1CCD9AB /* Pods-CoPaint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -312,6 +393,7 @@
 		};
 		F0F89BB4250341DA00220B0B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC00132979D22D13EAD91AB8 /* Pods-CoPaint.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

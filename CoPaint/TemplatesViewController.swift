@@ -17,7 +17,8 @@ class TemplatesViewController: UIViewController {
         templateCollection.delegate = self
         templateCollection.dataSource = self
     }
-
+    
+    @IBAction func cancel(_ unwindSegue: UIStoryboardSegue) {}
 }
 
 extension TemplatesViewController: UICollectionViewDelegate, UICollectionViewDataSource {

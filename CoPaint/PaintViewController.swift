@@ -12,6 +12,7 @@ class PaintViewController: UIViewController {
 
     @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var backgroundview: DrawingView!
+    var room: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,23 @@ class PaintViewController: UIViewController {
         scrollview.backgroundColor = .green
         
         backgroundview.image = UIImage(named: "snowman3")?.cgImage
+        
+        if let room = self.room {
+            CoPaintWebSocket.shared.join(id: room, completion: {}, onTouch: { touch in
+                print(touch, "received")
+                self.backgroundview.image = self.backgroundview.manipulatePixel(imageRef: self.backgroundview.image, point: (touch.x, touch.y), color: .black)
+                self.backgroundview.setNeedsDisplay()
+            })
+        } else {
+            CoPaintWebSocket.shared.create(completion: {
+                print(CoPaintWebSocket.shared.roomId)
+            }, onTouch: { touch in
+                print(touch, "received")
+                self.backgroundview.image = self.backgroundview.manipulatePixel(imageRef: self.backgroundview.image, point: (touch.x, touch.y), color: .black)
+                self.backgroundview.setNeedsDisplay()
+            })
+        }
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -90,6 +108,10 @@ class PaintViewController: UIViewController {
     //        free(data)
             return imageRef
         }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print(touches.first?.location(in: backgroundview))
+    }
 }
 
 extension PaintViewController: UIScrollViewDelegate {
