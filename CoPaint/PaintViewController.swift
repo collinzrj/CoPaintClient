@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ColorButton: UIButton {
     
@@ -36,6 +38,40 @@ class PaintViewController: UIViewController {
     let fourthButton = ColorButton(frame: CGRect(x: 135, y: 10, width: 25, height: 25))
     let checkIcon = UIImageView(image: UIImage(named: "checkIcon"))
     var selectedColor: UIColor = .blue
+    
+    @IBAction func uploadTapped(_ sender: Any) {
+        dump(backgroundview.image)
+        if let image = backgroundview.image {
+            let pngData = UIImage(cgImage: image).pngData()
+            let string = pngData?.base64EncodedString()
+            AF.request("https://go.hqy.moe/paintings/upload", method: .post, parameters: [
+                "paintingId": CoPaintWebSocket.shared.paintingId,
+                "image": string ?? ""
+            ]).response { (data) in
+                AF.request("https://go.hqy.moe/paintings/list", method: .get, parameters: [
+                    "paintingId": CoPaintWebSocket.shared.paintingId
+                ]).response { (data) in
+                        let json = try! JSON(data: data.data!)
+                       let photos = json["data"].array!
+                       let images: [UIImage] = photos.map { (photo) -> UIImage in
+                           var base64 = photo["image"].string ?? ""
+                           base64 = base64.replacingOccurrences(of: "data:image/jpeg;base64,", with: "")
+                           // print(base64)
+                           if let decodedData = Data(base64Encoded: base64) {
+                               let image = UIImage(data: decodedData)
+                               return image!
+                           } else {
+                               print("error when decoding, return empty image")
+                               return UIImage()
+                           }
+                       }
+                       print(images, "images get")
+                       self.performSegue(withIdentifier: "similarsegue", sender: images)
+                       print("perform segue")
+                }
+            }
+        }
+    }
     
     @IBAction func saveTapped(_ sender: Any) {
         if let image = backgroundview.image {
@@ -166,10 +202,17 @@ class PaintViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("enter prepare")
         if segue.identifier == "sharesegue" {
             print("another here")
             let controller = segue.destination as! SharePopoverViewController
             controller.roomId = CoPaintWebSocket.shared.roomId
+        } else if segue.identifier == "similarsegue" {
+            print("begin prepare")
+            let controller = segue.destination as! SimilarViewController
+            let images = sender as! [UIImage]
+            print("segue images", images)
+            controller.images = images
         }
     }
     

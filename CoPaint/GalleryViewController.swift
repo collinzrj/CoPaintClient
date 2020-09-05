@@ -15,14 +15,15 @@ class GalleryViewController: UIViewController {
 
     @IBOutlet weak var picturesCollection: UICollectionView!
     var files: [URL] = []
+    var filePath: URL = documentsPath
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         picturesCollection.delegate = self
         picturesCollection.dataSource = self
-        if let files = try? FileManager.default.contentsOfDirectory(atPath: documentsPath.path) {
-            self.files = files.map { documentsPath.appendingPathComponent($0) }
+        if let files = try? FileManager.default.contentsOfDirectory(atPath: filePath.path) {
+            self.files = files.map { filePath.appendingPathComponent($0) }
         }
         print(files)
     }
@@ -39,7 +40,7 @@ class GalleryViewController: UIViewController {
             if let decodedData = Data(base64Encoded: base64) {
                 let image = UIImage(data: decodedData)
                 let pngdata = image?.pngData()
-                try! pngdata?.write(to: documentsPath.appendingPathComponent("testserver.png"))
+                try! pngdata?.write(to: self.filePath.appendingPathComponent("testserver.png"))
                 print(documentsPath, "good")
             }
         }

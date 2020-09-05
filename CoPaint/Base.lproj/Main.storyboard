@@ -85,6 +85,64 @@
             </objects>
             <point key="canvasLocation" x="497.10144927536237" y="433.92857142857139"/>
         </scene>
+        <!--Similar View Controller-->
+        <scene sceneID="Iaj-pA-zlS">
+            <objects>
+                <viewController id="gDX-iY-c2t" customClass="SimilarViewController" customModule="CoPaint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FFX-AE-vZB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tf4-ZA-q0m">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zyt-ui-0aN">
+                                    <size key="itemSize" width="150" height="200"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="picturecell" id="KYf-8o-8da" customClass="TemplateCell" customModule="CoPaint" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="0.0" width="150" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="w49-aG-ogu">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qeB-dd-3Cw">
+                                                    <rect key="frame" x="8" y="8" width="134" height="141"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6D-59-FBH">
+                                                    <rect key="frame" x="8" y="160" width="134" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageview" destination="qeB-dd-3Cw" id="EN6-hE-nmg"/>
+                                            <outlet property="label" destination="V6D-59-FBH" id="RLR-qJ-HoQ"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ENZ-ri-2sD"/>
+                    </view>
+                    <connections>
+                        <outlet property="similarCollection" destination="tf4-ZA-q0m" id="QIs-Ff-Bv0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xN5-JN-2T3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1782.608695652174" y="594.64285714285711"/>
+        </scene>
         <!--Join Popover View Controller-->
         <scene sceneID="cwx-co-ceR">
             <objects>
@@ -223,10 +281,10 @@
             </objects>
             <point key="canvasLocation" x="-420" y="109"/>
         </scene>
-        <!--Paint View Controller-->
+        <!--gallerysegue-->
         <scene sceneID="Gji-MN-PxX">
             <objects>
-                <viewController storyboardIdentifier="PaintViewController" id="b7x-4L-5mM" customClass="PaintViewController" customModule="CoPaint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PaintViewController" title="gallerysegue" modalPresentationStyle="fullScreen" id="b7x-4L-5mM" customClass="PaintViewController" customModule="CoPaint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0mg-R4-J5h" userLabel="BaseView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -258,11 +316,18 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="cMQ-MA-VTB">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="Q7k-lV-211">
-                                            <connections>
-                                                <segue destination="QQj-rl-xMI" kind="unwind" unwindAction="cancel:" id="bri-UF-rv0"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Back" id="Q7k-lV-211">
+                                                <connections>
+                                                    <segue destination="QQj-rl-xMI" kind="unwind" unwindAction="cancel:" id="bri-UF-rv0"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Upload" id="Q9D-ML-bMN">
+                                                <connections>
+                                                    <action selector="uploadTapped:" destination="b7x-4L-5mM" id="6c5-Y2-txB"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
                                         <rightBarButtonItems>
                                             <barButtonItem title="Share" id="yau-Rc-hin">
                                                 <connections>
@@ -310,6 +375,7 @@
                         <outlet property="backgroundWidthConstraint" destination="m6c-wD-bcK" id="a2l-uc-4eC"/>
                         <outlet property="backgroundview" destination="C4d-y2-kEC" id="SIy-n1-5CW"/>
                         <outlet property="scrollview" destination="Ib7-Ue-76v" id="6K8-hM-hj3"/>
+                        <segue destination="gDX-iY-c2t" kind="presentation" identifier="similarsegue" id="JHu-zL-GV3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rrx-Jf-23R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
