@@ -36,6 +36,11 @@ class PaintViewController: UIViewController {
     let secondButton = ColorButton(frame: CGRect(x: 55, y: 10, width: 25, height: 25))
     let thirdButton = ColorButton(frame: CGRect(x: 95, y: 10, width: 25, height: 25))
     let fourthButton = ColorButton(frame: CGRect(x: 135, y: 10, width: 25, height: 25))
+    let button5 = ColorButton(frame: CGRect(x: 175, y: 10, width: 25, height: 25))
+    let button6 = ColorButton(frame: CGRect(x: 215, y: 10, width: 25, height: 25))
+    let button7 = ColorButton(frame: CGRect(x: 255, y: 10, width: 25, height: 25))
+    let button8 = ColorButton(frame: CGRect(x: 295, y: 10, width: 25, height: 25))
+    let button9 = ColorButton(frame: CGRect(x: 335, y: 10, width: 25, height: 25))
     let checkIcon = UIImageView(image: UIImage(named: "checkIcon"))
     var selectedColor: UIColor = .blue
     
@@ -119,7 +124,7 @@ class PaintViewController: UIViewController {
         scrollview.panGestureRecognizer.minimumNumberOfTouches = 1
         scrollview.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
         
-        let buttons = [(firstButton, UIColor.red), (secondButton, UIColor.yellow), (thirdButton, UIColor.blue), (fourthButton, UIColor.green)]
+        let buttons = [(firstButton, UIColor.red), (secondButton, UIColor.yellow), (thirdButton, UIColor.blue), (fourthButton, UIColor.green), (button5, UIColor.brown), (button6, UIColor.systemPink), (button6, UIColor.orange), (button7, UIColor.systemBlue), (button8, UIColor.purple), (button9, UIColor.systemRed)]
         for (button, color) in buttons {
             button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
             button.color = color
@@ -144,8 +149,31 @@ class PaintViewController: UIViewController {
                     self.backgroundview.image = image
                     self.backgroundWidthConstraint.constant = CGFloat(image.width)
                     self.backgroundHeightConstraint.constant = CGFloat(image.height)
+                    
+//                    let size = self.view.bounds.size
+//                    let widthScale = size.width / CGFloat(image.width)
+//                    let heightScale = size.height / CGFloat(image.width)
+//                    let minScale = min(widthScale, heightScale)
+//                    self.scrollview.minimumZoomScale = minScale
+//                    if minScale < 6 {
+//                        self.scrollview.maximumZoomScale = CGFloat(6.0)
+//                    } else {
+//                        self.scrollview.maximumZoomScale = minScale
+//                    }
+//                    self.scrollview.zoomScale = minScale
+//                    self.scrollViewDidZoom(self.scrollview)
+//                    self.scrollview.setNeedsLayout()
+//                    print("zoom scale is \(self.scrollview.zoomScale)")
+                    
+                    self.backgroundview.bounds = CGRect(x: 0, y: 0, width: image.width, height: image.height)
+                    
+                    
+                    print("sizeggg", image.width, image.height)
+                    self.updateMinZoomScaleForSize(self.view.bounds.size)
+                    self.view.setNeedsLayout()
                     self.backgroundview.setNeedsDisplay()
                     let touches = CoPaintWebSocket.shared.touches
+                    print("touches are", touches)
                     for touch in touches {
                         print(touch)
                         self.backgroundview.image = self.backgroundview.manipulatePixel(imageRef: self.backgroundview.image!, point: (touch.x, touch.y), color: UIColor(red: CGFloat(touch.r), green: CGFloat(touch.g), blue: CGFloat(touch.b), alpha: 255))
@@ -162,6 +190,7 @@ class PaintViewController: UIViewController {
         } else {
             if let image = templateImage.cgImage {
                 self.backgroundview.image = image
+                print("size is \(image.width) \(image.height)")
                 self.backgroundWidthConstraint.constant = CGFloat(image.width)
                 self.backgroundHeightConstraint.constant = CGFloat(image.height)
             }
@@ -199,6 +228,7 @@ class PaintViewController: UIViewController {
         }
         scrollview.zoomScale = minScale
         scrollViewDidZoom(scrollview)
+        print("zoom scale updated", minScale, size, backgroundview.bounds)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

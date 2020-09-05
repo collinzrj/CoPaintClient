@@ -28,7 +28,7 @@ internal class CoPaintWebSocket: WebSocketDelegate {
             }
     
     func didReceive(event: WebSocketEvent, client: WebSocket) {
-        dump(event) 
+        dump(event)
         switch event {
         case .text(let str):
             let json = JSON.init(parseJSON: str)
@@ -36,6 +36,7 @@ internal class CoPaintWebSocket: WebSocketDelegate {
                 self.roomId = json["room"]["id"].int!
                 self.paintingId = json["room"]["paintingId"].int!
                 let touches = json["room"]["touches"].array
+                self.touches = []
                 for json in touches ?? [] {
                     self.touches.append(Touch(x: json["x"].int!, y: json["y"].int!, r: json["r"].int!, g: json["g"].int!,  b: json["b"].int!))
                 }
@@ -53,10 +54,12 @@ internal class CoPaintWebSocket: WebSocketDelegate {
     public func create(paintingId: Int, completion: @escaping () -> Void, onTouch: @escaping (Touch) -> Void) {
         self.onTouch = onTouch
         self.onEnter = completion
+        self.touches = []
         self.socket.write(string: "{\"type\":\"room\",\"data\":{\"operation\":\"create\", \"Id\": \(paintingId)}}", completion: nil)
     }
     
     public func join(roomId: Int, completion: @escaping () -> Void, onTouch: @escaping (Touch) -> Void) {
+        self.touches = []
         self.onTouch = onTouch
         self.onEnter = completion
         self.socket.write(string: "{\"type\":\"room\",\"data\":{\"operation\":\"join\", \"Id\": \(roomId)}}", completion: nil)
