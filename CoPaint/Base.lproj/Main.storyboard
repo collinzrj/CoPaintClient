@@ -171,7 +171,11 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Templates" id="erj-Ox-4MZ">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="cU8-hd-Znq"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Join" id="cU8-hd-Znq">
+                                            <connections>
+                                                <action selector="JoinTapped:" destination="fvO-a2-Y8L" id="8K5-z2-3ay"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

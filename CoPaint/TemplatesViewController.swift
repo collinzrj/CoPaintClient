@@ -27,10 +27,25 @@ class TemplatesViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let alert = UIAlertController(title: "hahah", message: "Hellow World", preferredStyle: .alert)
+        
+    }
+    
+    @IBAction func JoinTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Join Room", message: nil, preferredStyle: .alert)
         alert.addTextField { (textfield) in
             textfield.placeholder = "Type your code here"
         }
+        alert.addAction(UIAlertAction(title: "done", style: .default, handler: { (_) in
+            if let room_string = alert.textFields?.first?.text,
+                let room = Int(room_string){
+                let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PaintViewController") as! PaintViewController
+                controller.room = room
+                controller.modalPresentationStyle = .fullScreen
+                print("room is", room)
+                self.present(controller, animated: false, completion: nil)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "cancel", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     

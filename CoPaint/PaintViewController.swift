@@ -63,7 +63,7 @@ class PaintViewController: UIViewController {
     }
     
     @IBAction func shareTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Room Code is" + String(CoPaintWebSocket.shared.roomId), message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Room Code is\n" + String(CoPaintWebSocket.shared.roomId), message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
@@ -94,6 +94,12 @@ class PaintViewController: UIViewController {
         if let room = self.room {
             CoPaintWebSocket.shared.join(roomId: room, completion: {
                 let index = CoPaintWebSocket.shared.paintingId
+                if index == 0 {
+                    let alert = UIAlertController(title: "Wrong Code", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                    return
+                }
                 self.templateIndex = index
                 let name = templates[index]
                 let imageURL = Bundle.main.url(forResource: name, withExtension: "png", subdirectory: "templates")!
