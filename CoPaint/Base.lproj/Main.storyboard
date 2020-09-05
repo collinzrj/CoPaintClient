@@ -76,7 +76,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mqH-ea-IVo"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Gallery" id="8T8-gL-Ccz"/>
+                    <tabBarItem key="tabBarItem" title="Gallery" image="photo" catalog="system" id="8T8-gL-Ccz"/>
                     <connections>
                         <outlet property="picturesCollection" destination="qyq-np-YIf" id="uFl-bX-yZv"/>
                     </connections>
@@ -195,7 +195,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1My-5B-vYQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Templates" id="zzI-Zs-NX6"/>
+                    <tabBarItem key="tabBarItem" title="Templates" image="doc.append" catalog="system" id="zzI-Zs-NX6"/>
                     <connections>
                         <outlet property="templateCollection" destination="l70-pC-WRU" id="rMN-6p-LKU"/>
                         <segue destination="b7x-4L-5mM" kind="presentation" identifier="paintsegue" modalPresentationStyle="fullScreen" id="ScT-Za-qXs"/>
@@ -350,5 +350,7 @@
     </scenes>
     <resources>
         <image name="arrowtriangle.left" catalog="system" width="128" height="113"/>
+        <image name="doc.append" catalog="system" width="115" height="128"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
     </resources>
 </document>

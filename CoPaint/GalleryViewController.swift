@@ -8,6 +8,8 @@
 
 import UIKit
 import QuickLook
+import Alamofire
+import SwiftyJSON
 
 class GalleryViewController: UIViewController {
 
@@ -27,6 +29,20 @@ class GalleryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         picturesCollection.reloadData()
+        AF.request("https://go.hqy.moe/paintings/list").response { response in
+            let json = JSON(response.data)
+            let firstPic = json["data"][0]
+            //print(firstPic["image"].string)
+            var base64 = firstPic["image"].string ?? ""
+            base64 = base64.replacingOccurrences(of: "data:image/jpeg;base64,", with: "")
+            print(base64)
+            if let decodedData = Data(base64Encoded: base64) {
+                let image = UIImage(data: decodedData)
+                let pngdata = image?.pngData()
+                try! pngdata?.write(to: documentsPath.appendingPathComponent("testserver.png"))
+                print(documentsPath, "good")
+            }
+        }
     }
 
 }

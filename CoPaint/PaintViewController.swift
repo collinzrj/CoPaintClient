@@ -92,9 +92,10 @@ class PaintViewController: UIViewController {
         ColorSelectionView.addSubview(checkIcon)
         
         if let room = self.room {
+            print("send room id \(room)")
             CoPaintWebSocket.shared.join(roomId: room, completion: {
                 let index = CoPaintWebSocket.shared.paintingId
-                if index == 0 {
+                if CoPaintWebSocket.shared.roomId == 0 {
                     let alert = UIAlertController(title: "Wrong Code", message: nil, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                     self.present(alert, animated: true)

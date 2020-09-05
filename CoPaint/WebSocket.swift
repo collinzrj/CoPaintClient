@@ -36,7 +36,7 @@ internal class CoPaintWebSocket: WebSocketDelegate {
                 self.roomId = json["room"]["id"].int!
                 self.paintingId = json["room"]["paintingId"].int!
                 let touches = json["room"]["touches"].array
-                for json in touches! {
+                for json in touches ?? [] {
                     self.touches.append(Touch(x: json["x"].int!, y: json["y"].int!, r: json["r"].int!, g: json["g"].int!,  b: json["b"].int!))
                 }
                 self.onEnter!()
