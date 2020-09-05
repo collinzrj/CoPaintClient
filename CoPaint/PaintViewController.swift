@@ -20,7 +20,7 @@ class PaintViewController: UIViewController {
         scrollview.panGestureRecognizer.minimumNumberOfTouches = 1
         scrollview.backgroundColor = .green
         
-        backgroundview.image = UIImage(named: "wings")?.cgImage
+        backgroundview.image = UIImage(named: "snowman3")?.cgImage
     }
     
     override func viewWillLayoutSubviews() {

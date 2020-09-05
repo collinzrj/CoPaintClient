@@ -62,29 +62,30 @@ class DrawingView: UIView {
         let frame_width = self.frame.width
         let frame_height = self.frame.height
         // may still exist some problem
-        let pixel_x = Int(point.x * self.bounds.width / CGFloat(pixelWidth))
-        let pixel_y = Int(CGFloat(pixelHeight) - point.y * self.bounds.height / CGFloat(pixelHeight))
+        let pixel_x = Int(point.x * CGFloat(pixelWidth) / self.bounds.width)
+        let pixel_y = Int(CGFloat(pixelHeight) - point.y * CGFloat(pixelHeight) / self.bounds.height)
     
         var pointsQueue = [(Int, Int)]()
         let t1 = CFAbsoluteTimeGetCurrent()
         pointsQueue.append((pixel_x, pixel_y))
         while pointsQueue.count > 0 {
             let currentPoint = pointsQueue.popLast()!
-            let offset = currentPoint.1 * height * 4 + currentPoint.0 * 4
+            let offset = currentPoint.1 * width * 4 + currentPoint.0 * 4
             dataType[offset] = UInt8(255)
             dataType[offset + 1] = UInt8(255)
             dataType[offset + 2] = UInt8(0)
             dataType[offset + 3] = UInt8(0)
-            
+
             for i in [-1, 0, 1] {
                 for j in [-1, 0, 1] {
                     let newPoint = (currentPoint.0 + i, currentPoint.1 + j)
-                    let new_offset = newPoint.1 * height * 4 + newPoint.0 * 4
-                    if newPoint.0 > 0 && newPoint.0 < width && newPoint.1 > 0 && newPoint.1 < height && dataType[new_offset + 1] > 250 && dataType[new_offset + 1] > 250 && dataType[new_offset + 2] > 250 {
+                    let new_offset = newPoint.1 * width * 4 + newPoint.0 * 4
+                    if newPoint.0 > 0 && newPoint.0 < width && newPoint.1 > 0 && newPoint.1 < height && dataType[new_offset + 1] == 255 && dataType[new_offset + 2] == 255 && dataType[new_offset + 3] == 255 {
                         pointsQueue.append(newPoint)
                     }
                 }
             }
+
         }
         let t2 = CFAbsoluteTimeGetCurrent()
         print(t2 - t1)
@@ -104,21 +105,6 @@ class DrawingView: UIView {
 //                dataType[offset + 1] = UInt8(255)
 //            }
 //        }
-            
-
-        var s = ""
-        for y in 0...(height - 1) {
-
-            base = y * height * 4
-            for x in 0...(width - 1) {
-                offset = base + x * 4
-                s += "\(dataType[offset]) \(dataType[offset + 1]) \(dataType[offset + 2]) \(dataType[offset + 3]) \n"
-            }
-        }
-        let encoder = JSONEncoder()
-        let d = try! encoder.encode(s)
-        let path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-        try! d.write(to: path.appendingPathComponent(UUID().uuidString))
         
         let imageRef = context?.makeImage()
 
@@ -139,11 +125,6 @@ class DrawingView: UIView {
         let context = UIGraphicsGetCurrentContext()
         context?.clear(bounds)
         context?.draw(image, in: bounds)
-        let uiimage = UIImage(cgImage: image)
-        let data = uiimage.pngData()
-        let path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-        try! data?.write(to: path.appendingPathComponent(UUID().uuidString).appendingPathExtension("png"))
-        print(path)
     }
 
 }
