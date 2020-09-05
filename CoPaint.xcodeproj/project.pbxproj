@@ -20,6 +20,7 @@
 		F0F89BBE2503A04400220B0B /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BBD2503A04400220B0B /* WebSocket.swift */; };
 		F0F89BC22503B08B00220B0B /* JoinPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BC12503B08B00220B0B /* JoinPopoverViewController.swift */; };
 		F0F89BC42503BA7200220B0B /* SharePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F89BC32503BA7200220B0B /* SharePopoverViewController.swift */; };
+		F0F89BD32503C75900220B0B /* templates in Resources */ = {isa = PBXBuildFile; fileRef = F0F89BD22503C75900220B0B /* templates */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		F0F89BBD2503A04400220B0B /* WebSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		F0F89BC12503B08B00220B0B /* JoinPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinPopoverViewController.swift; sourceTree = "<group>"; };
 		F0F89BC32503BA7200220B0B /* SharePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePopoverViewController.swift; sourceTree = "<group>"; };
+		F0F89BD22503C75900220B0B /* templates */ = {isa = PBXFileReference; lastKnownFileType = folder; name = templates; path = ../../../../Downloads/templates; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		F0F89BA0250341D900220B0B /* CoPaint */ = {
 			isa = PBXGroup;
 			children = (
+				F0F89BD22503C75900220B0B /* templates */,
 				F0F89BA1250341D900220B0B /* AppDelegate.swift */,
 				F0F89BA3250341D900220B0B /* SceneDelegate.swift */,
 				F0F89BA5250341D900220B0B /* ViewController.swift */,
@@ -99,8 +102,8 @@
 				F0F89BB52503442C00220B0B /* TemplatesViewController.swift */,
 				F0F89BC12503B08B00220B0B /* JoinPopoverViewController.swift */,
 				F0F89BC32503BA7200220B0B /* SharePopoverViewController.swift */,
-				F0F89BBB2503532400220B0B /* DrawingView.swift */,
 				F0F89BA7250341D900220B0B /* Main.storyboard */,
+				F0F89BBB2503532400220B0B /* DrawingView.swift */,
 				F0F89BAA250341DA00220B0B /* Assets.xcassets */,
 				F0F89BAC250341DA00220B0B /* LaunchScreen.storyboard */,
 				F0F89BAF250341DA00220B0B /* Info.plist */,
@@ -171,6 +174,7 @@
 			files = (
 				F0F89BAE250341DA00220B0B /* LaunchScreen.storyboard in Resources */,
 				F0F89BAB250341DA00220B0B /* Assets.xcassets in Resources */,
+				F0F89BD32503C75900220B0B /* templates in Resources */,
 				F0F89BA9250341D900220B0B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

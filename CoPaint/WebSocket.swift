@@ -16,6 +16,7 @@ internal class CoPaintWebSocket: WebSocketDelegate {
     private var onTouch: ((Touch) -> Void)? = nil
     private var onEnter: (() -> Void)? = nil
     public var roomId: Int = 0
+    public var paintingId: Int = 0
     public var touches: [Touch] = [] // touches already exist in the room
     
     
@@ -34,6 +35,7 @@ internal class CoPaintWebSocket: WebSocketDelegate {
             let json = JSON.init(parseJSON: str)
             if json["room"].exists() {
                 self.roomId = json["room"]["id"].int!
+                self.paintingId = json["room"]["paintingId"].int!
                 let touches = json["room"]["touches"].array
                 for json in touches! {
                     self.touches.append(Touch(x: json["x"].int!, y: json["y"].int!, r: json["r"].int!, g: json["g"].int!,  b: json["b"].int!))
@@ -51,17 +53,20 @@ internal class CoPaintWebSocket: WebSocketDelegate {
         }
     }
     
-    public func create(completion: @escaping () -> Void, onTouch: @escaping (Touch) -> Void) {
+    public func create(paintingId: Int, completion: @escaping () -> Void, onTouch: @escaping (Touch) -> Void) {
         self.onTouch = onTouch
         self.onEnter = completion
-        let json = "{\"type\":\"room\",\"data\":{\"operation\":\"create\"}}"
-        self.socket.write(string: json, completion: nil)
+        self.socket.write(string: "{\"type\":\"room\",\"data\":{\"operation\":\"create\", \"Id\": \(paintingId)}}", completion: nil)
     }
     
-    public func join(id: Int, completion: @escaping () -> Void, onTouch: @escaping (Touch) -> Void) {
+    public func join(roomId: Int, completion: @escaping () -> Void, onTouch: @escaping (Touch) -> Void) {
         self.onTouch = onTouch
         self.onEnter = completion
-        self.socket.write(string: "{\"type\":\"room\",\"data\":{\"operation\":\"join\", \"roomId\": \(id)}}", completion: nil)
+        self.socket.write(string: "{\"type\":\"room\",\"data\":{\"operation\":\"join\", \"Id\": \(roomId)}}", completion: nil)
+    }
+    
+    public func exit() {
+        self.socket.write(string: "{\"type\":\"room\",\"data\":{\"operation\":\"exit\"", completion: nil)
     }
     
     public func touch(x: Int, y: Int, r: Int, g: Int, b: Int) {

@@ -11,7 +11,8 @@ import CoreGraphics
 
 class DrawingView: UIView {
     
-    var image: CGImage!
+    var image: CGImage?
+    var selectedColor: UIColor!
     var paths = [UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 500, height: 500)),
                  UIBezierPath(ovalIn: CGRect(x: 100, y: 100, width: 50, height: 50)),
                  UIBezierPath(ovalIn: CGRect(x: 300, y: 200, width: 50, height: 50))]
@@ -19,21 +20,20 @@ class DrawingView: UIView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let point = touches.first?.location(in: self) {
-//            for (index, path) in paths.enumerated() {
-//                print(point)
-//                print(path.contains(point))
-//                if path.contains(point) {
-//                    filled.append(index)
-//                }
-//            }
-//            setNeedsDisplay()
-            let pixelWidth = image.width
-            let pixelHeight = image.height
-            let pixel_x = Int(point.x * CGFloat(pixelWidth) / self.bounds.width)
-            let pixel_y = Int(CGFloat(pixelHeight) - point.y * CGFloat(pixelHeight) / self.bounds.height)
-            CoPaintWebSocket.shared.touch(x: pixel_x, y: pixel_y, r: 8, g: 8, b: 9)
-//            self.image = manipulatePixel(imageRef: image, point: (pixel_x, pixel_y), color: .black)
-//            setNeedsDisplay()
+            if let image = image {
+                let pixelWidth = image.width
+                let pixelHeight = image.height
+                let pixel_x = Int(point.x * CGFloat(pixelWidth) / self.bounds.width)
+                let pixel_y = Int(point.y * CGFloat(pixelHeight) / self.bounds.height)
+                
+                var red: CGFloat = 0
+                var green: CGFloat = 0
+                var blue: CGFloat = 0
+                var alpha: CGFloat = 0
+                selectedColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+                
+                CoPaintWebSocket.shared.touch(x: pixel_x, y: pixel_y, r: Int(red * 255), g: Int(green * 255), b: Int(blue * 255))
+            }
         }
     }
     
@@ -76,9 +76,15 @@ class DrawingView: UIView {
             let currentPoint = pointsQueue.popLast()!
             let offset = currentPoint.1 * width * 4 + currentPoint.0 * 4
             dataType[offset] = UInt8(255)
-            dataType[offset + 1] = UInt8(255)
-            dataType[offset + 2] = UInt8(0)
-            dataType[offset + 3] = UInt8(0)
+            
+            var red: CGFloat = 0
+            var green: CGFloat = 0
+            var blue: CGFloat = 0
+            var alpha: CGFloat = 0
+            color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+            dataType[offset + 1] = UInt8(red)
+            dataType[offset + 2] = UInt8(green)
+            dataType[offset + 3] = UInt8(blue)
 
             for i in [-1, 0, 1] {
                 for j in [-1, 0, 1] {
@@ -126,9 +132,15 @@ class DrawingView: UIView {
 //                path.fill()
 //            }
 //        }
-        let context = UIGraphicsGetCurrentContext()
-        context?.clear(bounds)
-        context?.draw(image, in: bounds)
+//        let context = UIGraphicsGetCurrentContext()
+        
+//        context?.clear(bounds)
+//        context?.draw(image, in: bounds)
+        
+        if let image = image {
+            let uiimage = UIImage(cgImage: image)
+            uiimage.draw(in: bounds)
+        }
     }
 
 }
